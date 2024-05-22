@@ -24,9 +24,18 @@ function App() {
     setWineName(event.target.value);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      // yet to perform action upon pressing the enter key
+      console.log(`Enter key pressed with input: ${wineName}`);
+      setReviews([...reviews, wineName]); // This will trigger a re-render
+    }
+  };
+
   const filtered = data.length > 0 ? data.filter((row) => {
     return row.brand && row.brand.toLowerCase().includes(wineName.toLowerCase());
   }) : [];
+  
   
 
 
@@ -34,28 +43,29 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={josh} className="App-logo" alt="logo" />
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
         <input
           type="text"
           placeholder="Enter wine name"
           value={wineName}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
         />
         <ul>
           {filtered.map((row, index) => (
             <li key={index}>{row.brand}</li>
           ))}
         </ul>
-        <a
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
     );
