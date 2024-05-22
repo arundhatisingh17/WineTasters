@@ -47,8 +47,9 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
         <input
+          className='user-input'
           type="text"
-          placeholder="Enter wine name"
+          placeholder="Enter your preferred choice of beverage"
           value={wineName}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
