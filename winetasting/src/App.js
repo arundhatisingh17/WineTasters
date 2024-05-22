@@ -26,9 +26,10 @@ function App() {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      // yet to perform action upon pressing the enter key
-      console.log(`Enter key pressed with input: ${wineName}`);
-      setReviews([...reviews, wineName]); // This will trigger a re-render
+      const filtered = data.filter((row) => {
+        return row.brand && row.brand.toLowerCase().includes(wineName.toLowerCase());
+      });
+      setReviews(filtered); // This will trigger a re-render
     }
   };
 
@@ -56,7 +57,7 @@ function App() {
         />
         <ul>
           {filtered.map((row, index) => (
-            <li key={index}>{row.brand}</li>
+            <li key={index}>{row.brand}: {row['reviews.txt']}</li>
           ))}
         </ul>
         {/* <a
